@@ -23,3 +23,16 @@ Design Goals:
 https://github.com/thilaire/rpi-TM1638
 
 https://www.ibiblio.org/apollo/developer.html#sendrecv_Protocol
+(see Table of I/O Channels
+
+##yaAGC Installation on Raspberry Pi Buster##
+Pre-Requisites:
+'''
+sudo apt-get install wx3.0-headers libwxgtk3.0-dev libsdl-dev libncurses5-dev liballegro4-dev git sudo apt-get tcl tk
+'''
+Compilation:  
+'''
+git clone --depth 1 https://github.com/virtualagc/virtualagc
+cd virtualagc
+make clean install
+'''
