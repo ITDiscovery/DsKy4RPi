@@ -21,3 +21,5 @@ Design Goals:
    c. Connection headers to allow additional switch banks to be connected: Since U2 and U3 keyboard connections where not needed, I broke out those to a header which will allow an additional 60 keys (not switches) to be connected. 
 
 https://github.com/thilaire/rpi-TM1638
+
+https://www.ibiblio.org/apollo/developer.html#sendrecv_Protocol
