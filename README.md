@@ -72,6 +72,29 @@ Design Goals:
 | U1 | 10 | 7 | LED11 |  |
 | U1 | 10 | 8 | LED11 | Spare (Panel Lighting?) |
 
+## KEY Addressing ##
+| IC | GR | Key | Location | Meaning | 
+| ---| ---- | --- | ---------- | ----------- |
+| U1 | 1 | 1 | SW1 | ENTR |
+| U1 | 1 | 2 | SW2 | RSET |
+| U1 | 1 | 3 | SW3 | CLR |
+| U1 | 1 | 4 | SW4 | PROG |
+| U1 | 1 | 5 | SW5 | KEY REL |
+| U1 | 1 | 6 | SW6 | ENTR |
+| U1 | 1 | 7 | SW7 | ENTR |
+| U1 | 1 | 8 | SW8 | ENTR |
+| U1 | 2 | 1 | SW9 | ENTR |
+| U1 | 2 | 2 | SW10 | ENTR |
+| U1 | 2 | 3 | SW11 | ENTR |
+| U1 | 2 | 4 | SW12 | ENTR |
+| U1 | 2 | 5 | SW13 | ENTR |
+| U1 | 2 | 6 | SW14 | ENTR |
+| U1 | 2 | 7 | SW15 | ENTR |
+| U1 | 2 | 8 | SW16 | ENTR |
+| U1 | 3 | 1 | SW17 | ENTR |
+| U1 | 3 | 2 | SW18 | ENTR |
+| U1 | 3 | 3 | SW19 | ENTR |
+
 
 
 https://github.com/thilaire/rpi-TM1638
