@@ -6,21 +6,19 @@ Will contain source, libraries and build notes for Apollo DsKy board for Rasperr
 Design Goals:
 
 1. Not a slave to the actual Apollo DsKy, as close as feasible. 
-     a. 3 sets of 5 Digits with a 1 and plus/minus.
-     b. 19 key switches
-     c. 15 LEDs
+     * 3 sets of 5 Digits with a 1 and plus/minus.
+     * 19 key switches
+     * 15 LEDs
 2. Raspberry Pi: chain 3 TM1638's together and use the same ports as T Hilaire's software.
-     DataIO on GPIO19 (Pin 35)
-     Clk on GPIO13 (Pin 37)
-     STB U1 on GPIO26 (Pin 37)
-     STB U2 on GPIO6 (Pin 31)
-     STB U3 on GPIO5 (Pin 29)
+     * DataIO on GPIO19 (Pin 35)
+     * Clk on GPIO13 (Pin 37)
+     * STB U1 on GPIO26 (Pin 37)
+     * STB U2 on GPIO6 (Pin 31)
+     * STB U3 on GPIO5 (Pin 29)
 3. Additional adds:
-     a. Extended the 40 pin GPIO header to allow a male header or easy soldering of additional parts.
-     b. Extra header breakouts: Serial, SPI
-     c. Connection headers to allow additional switch banks to be connected: Since U2 and U3 keyboard connections where not needed, I broke out those to a header which will allow an additional 60 keys (not switches) to be connected. 
-
-
+     * Extended the 40 pin GPIO header to allow a male header or easy soldering of additional parts.
+     * Extra header breakouts: Serial, SPI
+     * Connection headers to allow additional switch banks to be connected: Since U2 and U3 keyboard connections where not needed, I broke out those to a header which will allow an additional 60 keys (not switches) to be connected. 
 
 # Hardware Configuration #
 
