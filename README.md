@@ -11,7 +11,7 @@ Design Goals:
      * 15 LEDs
 2. Raspberry Pi: chain 3 TM1638's together and use the same ports as T Hilaire's software.
      * DataIO on GPIO19 (Pin 35)
-     * Clk on GPIO13 (Pin 37)
+     * Clk on GPIO13 (Pin 33)
      * STB U1 on GPIO26 (Pin 37)
      * STB U2 on GPIO6 (Pin 31)
      * STB U3 on GPIO5 (Pin 29)
