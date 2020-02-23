@@ -24,13 +24,13 @@ Design Goals:
 
 ## 7 Segment Addressing ##
 
-| Col 1/1 | Col 1/2 | Col 2/1 | Col 2/2 | Col 3/1 | Col 3/2 |
-| ------- | ------ | ------ | ----- | ------ | ------ |
-| Blank | Blank | Blank | Blank | U3 GR7 | U3 GR8 |
-| U2 GR7 | U2 GR8 | Blank | Blank | U1 GR7 | U1 GR8 |
-| U3 GR6 | U3 GR1 | U3 GR2 | U3 GR3 | U3 GR4 | U3 GR5 |
-| U2 GR6 | U2 GR1 | U2 GR2 | U2 GR3 | U2 GR4 | U3 GR5 |
-| U1 GR6 | U1 GR1 | U1 GR2 | U1 GR3 | U1 GR4 | U3 GR5 |
+ | Row | Col 1/1 | Col 1/2 | Col 2/1 | Col 2/2 | Col 3/1 | Col 3/2 |
+| -- | ------- | ------ | ------ | ----- | ------ | ------ |
+| A | Blank | Blank | Blank | Blank | U3 GR7 | U3 GR8 |
+| B | U2 GR7 | U2 GR8 | Blank | Blank | U1 GR7 | U1 GR8 |
+| 1 | U3 GR6 | U3 GR1 | U3 GR2 | U3 GR3 | U3 GR4 | U3 GR5 |
+| 2 | U2 GR6 | U2 GR1 | U2 GR2 | U2 GR3 | U2 GR4 | U3 GR5 |
+| 3 | U1 GR6 | U1 GR1 | U1 GR2 | U1 GR3 | U1 GR4 | U3 GR5 |
 
 
 ## LED Addressing ##
