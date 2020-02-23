@@ -24,75 +24,57 @@ Design Goals:
 
 ## 7 Segment Addressing ##
 
-| IC | Digit | Location |
-| ---- | ---- | ---------- |
-| U1 | 1 | Data2-2B |
-| U1 | 2 | Data2-2A |
-| U1 | 3 | Data2-3B |
-| U1 | 4 | Data2-3A |
-| U1 | 5 | Data3-2B |
-| U1 | 6 | Data3-2A |
-| U1 | 7 | Data3-3B |
-| U1 | 8 | Data3-3A |
-| U2 | 1 | Data1-2A |
-| U2 | 2 | Data1-2B |
-| U2 | 3 | Data3-1B |
-| U2 | 4 | Data3-1A |
-| U2 | 5 | Data1-1A |
-| U2 | 6 | Data1-1B |
-| U2 | 7 | Data2-1A |
-| U2 | 8 | Data2-1B |
-| U3 | 1 | Data1-3B |
-| U3 | 2 | Data1-3A |
-| U3 | 3 | PROG-B |
-| U3 | 4 | PROG-A |
-| U3 | 5 | NOUN-B |
-| U3 | 6 | NOUN-A |
-| U3 | 7 | VERB-B |
-| U3 | 8 | VERB-A |
+| Col 1/1 | Col 1/2 | Col 2/1 | Col 2/2 | Col 3/1 | Col 3/2 |
+| ------- | ------ | ------ | ----- | ------ | ------ |
+| Blank | Blank | Blank | Blank | U3 GR7 | U3 GR8 |
+| U2 GR7 | U2 GR8 | Blank | Blank | U1 GR7 | U1 GR8 |
+| U3 GR6 | U3 GR1 | U3 GR2 | U3 GR3 | U3 GR4 | U3 GR5 |
+| U2 GR6 | U2 GR1 | U2 GR2 | U2 GR3 | U2 GR4 | U3 GR5 |
+| U1 GR6 | U1 GR1 | U1 GR2 | U1 GR3 | U1 GR4 | U3 GR5 |
+
 
 ## LED Addressing ##
 
-| IC | Digit | Segment | Location | Meaning | 
-| ---- | ---- | --- | ---------- | ----------- |
-| U1 | 9 | 1 | LED1 | TEMP |
-| U1 | 9 | 2 | LED2 | GIMBAL LOCK |
-| U1 | 9 | 3 | LED3 | PROG |
-| U1 | 9 | 4 | LED4 | RESTART |
-| U1 | 9 | 5 | LED5 | TRACKER |
-| U1 | 9 | 6 | LED6 | ALT |
-| U1 | 9 | 7 | LED7 | VEL |
-| U1 | 9 | 8 | LED8 | COMP ACTIVITY |
-| U1 | 10 | 1 | LED9 | UPLINK ACTIVITY |
-| U1 | 10 | 2 | LED10 | NO ATT |
-| U1 | 10 | 3 | LED11 | STBY |
-| U1 | 10 | 4 | LED11 | KEY REL |
-| U1 | 10 | 5 | LED11 | OPR ERR |
-| U1 | 10 | 6 | LED11 |  |
-| U1 | 10 | 7 | LED11 |  |
-| U1 | 10 | 8 | LED11 | Spare (Panel Lighting?) |
+| IC | Digit | Segment | Location | Meaning | Register | Value |
+| ---- | ---- | --- | ---------- | ----------- | ----- |
+| U1 | 9 | 1 | LED1 | TEMP | 0x01 | 1 |
+| U1 | 9 | 2 | LED2 | GIMBAL LOCK | 0x03 | 1 |
+| U1 | 9 | 3 | LED3 | PROG | 0x05 | 1 |
+| U1 | 9 | 4 | LED4 | RESTART | 0x07 | 1 |
+| U1 | 9 | 5 | LED5 | TRACKER | 0x09 | 1 |
+| U1 | 9 | 6 | LED6 | ALT | 0x0B | 1 |
+| U1 | 9 | 7 | LED7 | VEL | 0x0D | 1 |
+| U1 | 9 | 8 | LED8 | COMP ACTIVITY | 0x0F | 1 |
+| U1 | 10 | 1 | LED9 | UPLINK ACTIVITY | 0x01 | 2 |
+| U1 | 10 | 2 | LED10 | NO ATT | 0x03 | 2 |
+| U1 | 10 | 3 | LED11 | STBY | 0x05 | 2 |
+| U1 | 10 | 4 | LED11 | KEY REL | 0x07 | 2 |
+| U1 | 10 | 5 | LED11 | OPR ERR | 0x09 | 2 |
+| U1 | 10 | 6 | LED11 |  | 0x0B | 2 |
+| U1 | 10 | 7 | LED11 |  | 0x0D | 2 |
+| U1 | 10 | 8 | LED11 | Spare (Panel Lighting?) | 0x0F | 2 |
 
 ## KEY Addressing ##
-| IC | GR | Key | Location | Meaning | 
+| IC | GR | Key | Location | Meaning | Code |
 | ---| ---- | --- | ---------- | ----------- |
-| U1 | 1 | 1 | SW1 | ENTR |
-| U1 | 1 | 2 | SW2 | RSET |
+| U1 | 1 | 1 | SW1 | ENTR | 2 | 
+| U1 | 1 | 2 | SW2 | RSET | 6 | 
 | U1 | 1 | 3 | SW3 | CLR |
 | U1 | 1 | 4 | SW4 | PROG |
 | U1 | 1 | 5 | SW5 | KEY REL |
 | U1 | 1 | 6 | SW6 | ENTR |
 | U1 | 1 | 7 | SW7 | ENTR |
 | U1 | 1 | 8 | SW8 | ENTR |
-| U1 | 2 | 1 | SW9 | ENTR |
-| U1 | 2 | 2 | SW10 | ENTR |
+| U1 | 2 | 1 | SW9 | ENTR | 1 |
+| U1 | 2 | 2 | SW10 | ENTR | 5 |
 | U1 | 2 | 3 | SW11 | ENTR |
 | U1 | 2 | 4 | SW12 | ENTR |
 | U1 | 2 | 5 | SW13 | ENTR |
 | U1 | 2 | 6 | SW14 | ENTR |
 | U1 | 2 | 7 | SW15 | ENTR |
 | U1 | 2 | 8 | SW16 | ENTR |
-| U1 | 3 | 1 | SW17 | ENTR |
-| U1 | 3 | 2 | SW18 | ENTR |
+| U1 | 3 | 1 | SW17 | ENTR | 0 |
+| U1 | 3 | 2 | SW18 | ENTR | 4 |
 | U1 | 3 | 3 | SW19 | ENTR |
 
 
