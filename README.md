@@ -6,9 +6,9 @@ Will contain source, libraries and build notes for Apollo DsKy board for Rasperr
 Design Goals:
 
 1. Not a slave to the actual Apollo DsKy, as close as feasible. 
-     * 3 sets of 5 Digits with a 1 and plus/minus.
+     * 3 sets of 6 Digits (elimiated the 1 and plus/minus, but I will have a mod to swap out 6th digit for a +/-)
      * 19 key switches
-     * 15 LEDs
+     * 15 LEDs + 1 "Panel LED"
 2. Raspberry Pi: chain 3 TM1638's together and use the same ports as T Hilaire's software.
      * DataIO on GPIO19 (Pin 35)
      * Clk on GPIO13 (Pin 33)
