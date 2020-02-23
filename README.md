@@ -36,7 +36,7 @@ Design Goals:
 ## LED Addressing ##
 
 | IC | Digit | Segment | Location | Meaning | Register | Value |
-| ---- | ---- | --- | ---------- | ----------- | ----- |
+| ---- | ---- | --- | ---------- | ----------- | ----- | ------ |
 | U1 | 9 | 1 | LED1 | TEMP | 0x01 | 1 |
 | U1 | 9 | 2 | LED2 | GIMBAL LOCK | 0x03 | 1 |
 | U1 | 9 | 3 | LED3 | PROG | 0x05 | 1 |
@@ -56,7 +56,7 @@ Design Goals:
 
 ## KEY Addressing ##
 | IC | GR | Key | Location | Meaning | Code |
-| ---| ---- | --- | ---------- | ----------- |
+| --- | ---- | --- | ---------- | ----------- | --- |
 | U1 | 1 | 1 | SW1 | ENTR | 2 | 
 | U1 | 1 | 2 | SW2 | RSET | 6 | 
 | U1 | 1 | 3 | SW3 | CLR |
