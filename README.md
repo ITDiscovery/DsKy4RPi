@@ -12,9 +12,9 @@ Design Goals:
 2. Raspberry Pi: chain 3 TM1638's together and use the same ports as T Hilaire's software.
      * DataIO on GPIO19 (Pin 35)
      * Clk on GPIO13 (Pin 33)
-     * STB U1 on GPIO26 (Pin 37)
+     * STB U1 on GPIO26 (Pin 29)
      * STB U2 on GPIO6 (Pin 31)
-     * STB U3 on GPIO5 (Pin 29)
+     * STB U3 on GPIO5 (Pin 37)
 3. Additional adds:
      * Extended the 40 pin GPIO header to allow a male header or easy soldering of additional parts.
      * Extra header breakouts: Serial, SPI
