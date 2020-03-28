@@ -6,7 +6,7 @@ Will contain source, libraries and build notes for Apollo DsKy board for Rasperr
 Design Goals:
 
 1. Not a slave to the actual Apollo DsKy, as close as feasible. 
-     * 3 sets of 6 Digits (elimiated the 1 and plus/minus, but I will have a mod to swap out 6th digit for a +/-)
+     * 3 sets of 6 Digits (elimiated the 1 and plus/minus, but I will have a mod to swap out 1st digit for a +/-)
      * 19 key switches
      * 15 LEDs + 1 "Panel LED"
 2. Raspberry Pi: chain 3 TM1638's together and use the same ports as T Hilaire's software.
@@ -16,9 +16,12 @@ Design Goals:
      * STB U2 on GPIO6 (Pin 31)
      * STB U3 on GPIO5 (Pin 37)
 3. Additional adds:
-     * Extended the 40 pin GPIO header to allow a male header or easy soldering of additional parts.
-     * Extra header breakouts: Serial, SPI
-     * Connection headers to allow additional switch banks to be connected: Since U2 and U3 keyboard connections where not needed, I broke out those to a header which will allow an additional 60 keys (not switches) to be connected. 
+     * Extra header breakouts: 
+        * Serial: 5V, TX, RX, NC, NC, Gnd
+        * SPI: SPI_CE0_N (Pin 24),SPI_CE1_N (Pin 26), SPI_MOSI (Pin 19), SPI_MISO (Pin 21), SPI_CLK (Pin 23), Gnd
+        * I2C: 3.3V, SDA1, SCL1, IC_SD (Pin 27), IC_SC (Pin 28), Gnd
+     * Connection headers to allow additional switch banks to be connected: Since U1 and U2 keyboard connections where not needed, I broke out those to a header which will allow an additional 60 keys (not switches) to be connected. 
+     * Panel Lighting switchable via GPIO 16 (Pin 36), this optional circuitry can have higher current LEDs (such as an Arcade button LED) driven by this circuit.
 
 # Hardware Configuration #
 
