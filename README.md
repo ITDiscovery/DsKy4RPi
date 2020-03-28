@@ -24,14 +24,41 @@ Design Goals:
 
 ## 7 Segment Addressing ##
 
- | Row | Col 1/1 | Col 1/2 | Col 2/1 | Col 2/2 | Col 3/1 | Col 3/2 |
+### Original DsKy
+| Row | Col 1/1 | Col 1/2 | Col 2/1 | Col 2/2 | Col 3/1 | Col 3/2 |
+| -- | ------- | ------ | ------ | ----- | ------ | ------ |
+| A | Blank | Blank | Blank | Blank | Prog 1 | Prog 2 |
+| B | Verb 1 | Verb 2 | Blank | Blank | Noun 1 | Noun 2 |
+| 1 | Data 1 +/- | Data 1-1 | Data 1-2 | Data 1-3 | Data 1-4 | Data 1-5 |
+| 2 | Data 2 +/- | Data 2-1 | Data 2-2 | Data 2-3 | Data 2-4 | Data 2-5 |
+| 3 | Data 3 +/- | Data 3-1 | Data 3-2 | Data 3-3 | Data 3-4 | Data 3-5 |
+
+### Digit to Driver
+| Row | Col 1/1 | Col 1/2 | Col 2/1 | Col 2/2 | Col 3/1 | Col 3/2 |
 | -- | ------- | ------ | ------ | ----- | ------ | ------ |
 | A | Blank | Blank | Blank | Blank | U1 GR7 | U1 GR8 |
 | B | U2 GR7 | U2 GR8 | Blank | Blank | U3 GR7 | U3 GR8 |
-| 1 | U3 GR6 | U3 GR1 | U3 GR2 | U3 GR3 | U3 GR4 | U3 GR5 |
-| 2 | U2 GR6 | U2 GR1 | U2 GR2 | U2 GR3 | U2 GR4 | U2 GR5 |
-| 3 | U1 GR6 | U1 GR1 | U1 GR2 | U1 GR3 | U1 GR4 | U1 GR5 |
+| 1 | U3 GR1 | U3 GR2 | U3 GR3 | U3 GR4 | U3 GR5 | U3 GR6 |
+| 2 | U2 GR1 | U2 GR2 | U2 GR3 | U2 GR4 | U2 GR5 | U2 GR6 |
+| 3 | U3 GR1 | U3 GR2 | U3 GR3 | U3 GR4 | U3 GR5 | U3 GR6 |
 
+### 2x7 Version
+| Row | Col 1/1 | Col 1/2 | Col 2/1 | Col 2/2 | Col 3/1 | Col 3/2 |
+| -- | ------- | ------ | ------ | ----- | ------ | ------ |
+| A | Blank | Blank | Blank | Blank | Prog1/2 |  |
+| B | Verb1/2 |  | Blank | Blank | Noun1/2 |  |
+| 1 | Data1-1/2 |  | Data1-3/4 |  | Data1-5/6 |  |
+| 2 | Data2-1/2 |  | Data2-3/4 |  | Data2-5/6 |  |
+| 3 | Data3-1/2 |  | Data3-3/4 |  | Data3-5/6 |  |
+
+### 4x7 Version
+| Row | Col 1/1 | Col 1/2 | Col 2/1 | Col 2/2 | Col 3/1 | Col 3/2 |
+| -- | ------- | ------ | ------ | ----- | ------ | ------ |
+| A | Blank | Blank | Blank | Blank | Prog1 | Prog2 |
+| B | Verb1 | Verb2 | Blank | Blank | Noun1 | Noun2 |
+| 1 | Data1-1 | Data1-2| Data1-3/6 | | | |
+| 2 | Data2-1 | Data2-2 | UData1-3/6 | | | |
+| 3 | Data3-1 | Data3-2 | Data1-3/6 | | | |
 
 ## LED Addressing ##
 
@@ -84,6 +111,15 @@ http://www.bgmicro.com/para-light-c-562g-dual-7-segment-readout.aspx
 
 https://www.ibiblio.org/apollo/developer.html#sendrecv_Protocol
 (see Table of I/O Channels
+
+Components:
+https://lcsc.com/product-detail/LED-Drivers_TM-Shenzhen-Titan-Micro-Elec-TM1638_C19187.html?ref=editor&logined=true
+1x7 and 4x7 Segments:
+https://lcsc.com/product-detail/Led-Segment-Display_0-56-Digitron-red-RED_C109200.html?ref=editor&logined=true
+https://lcsc.com/product-detail/Led-Segment-Display_SM420561N_C141367.html?ref=editor&logined=true
+or
+2x7 Segments:
+http://www.bgmicro.com/para-light-c-562g-dual-7-segment-readout.aspx
 
 ## yaAGC Installation on Raspberry Pi Buster ##
 Pre-Requisites:
