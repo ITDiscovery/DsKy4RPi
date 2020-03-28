@@ -57,7 +57,7 @@ Design Goals:
 | A | Blank | Blank | Blank | Blank | Prog1 | Prog2 |
 | B | Verb1 | Verb2 | Blank | Blank | Noun1 | Noun2 |
 | 1 | Data1-1 | Data1-2| Data1-3/6 | | | |
-| 2 | Data2-1 | Data2-2 | UData1-3/6 | | | |
+| 2 | Data2-1 | Data2-2 | Data1-3/6 | | | |
 | 3 | Data3-1 | Data3-2 | Data1-3/6 | | | |
 
 ## LED Addressing ##
