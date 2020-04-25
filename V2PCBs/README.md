@@ -1,8 +1,8 @@
 ## SMT Soldering Check for 2x7 Board
-U3
 
 | U1 Pin | Test Pt | | U2 Pin | Test Pt | | U3 Pin | Test Pt |
 |----|---------|-|----|---------|-|----|---------|-|
+
 | 1 | SW1-2 || 1 | SW1-2 || 1 | SW1-2 |
 
 | 2 | SW9-2 |
