@@ -17,16 +17,16 @@
 | 13 | N/C | | 13 | N/C | | 13 | LED1 Anode |
 | 14 | N/C | | 14 | N/C | | 14 | LED9 Anode |
 | 15 | P1-2 | | 15 | P1-2 | | 15 | P1-2 |
-| 16 | Prog1/2-13 | | 16 | LED8 Cathode | | 16 | LED8 Cathode |
-| 17 | Prog1/2-14 | | 17 | LED7 Cathode | | 17 | LED7 Cathode |
+| 16 | Prog1/2-13 | | 16 | Verb1/2-13 | | 16 | LED8 Cathode |
+| 17 | Prog1/2-14 | | 17 | Verb1/2-14 | | 17 | LED7 Cathode |
 | 18 | P1-6 | | 18 | P1-6 | | 18 | P1-6 |
-| 19 | Data1_5/6-13 | | 19 | LED6 Cathode | | 19 | LED6 Cathode |
-| 20 | Data1_5/6-14 | | 20 | LED5 Cathode | | 20 | LED5 Cathode |
-| 21 | Data1_3/4-13 | | 21 | LED4 Cathode | | 21 | LED4 Cathode |
-| 22 | Data1_3/4-14 | | 22 | LED3 Cathode | | 22 | LED3 Cathode |
-| 23 | Data1_1/2-13 | | 23 | LED2 Cathode | | 23 | LED2 Cathode |
-| 24 | Data1_1/2-14 | | 24 | LED1 Cathode | | 24 | LED1 Cathode |
+| 19 | Data1_5/6-13 | | 19 | Data2_5/6-13 | | 19 | LED6 Cathode |
+| 20 | Data1_5/6-14 | | 20 | Data2_5/6-14 | | 20 | LED5 Cathode |
+| 21 | Data1_3/4-13 | | 21 | Data2_3/4-13 | | 21 | LED4 Cathode |
+| 22 | Data1_3/4-14 | | 22 | Data2_3/4-14 | | 22 | LED3 Cathode |
+| 23 | Data1_1/2-13 | | 23 | Data2_1/2-13 | | 23 | LED2 Cathode |
+| 24 | Data1_1/2-14 | | 24 | Data2_1/2-14 | | 24 | LED1 Cathode |
 | 25 | P1-6 | | 25 | P1-6 | | 25 | P1-6 |
 | 26 | P1-35 | | 26 | P1-35 | | 26 | P1-35 |
 | 27 | P1-33 | | 27 | P1-33 | | 27 | P1-33 |
-| 28 | P1-29 | | 28 | P1-37 | | 28 | P1-37 |
+| 28 | P1-29 | | 28 | P1-31 | | 28 | P1-37 |
