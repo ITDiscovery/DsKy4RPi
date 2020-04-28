@@ -46,7 +46,7 @@ Recommended soldering instructions.
 | U1 Pin | Test Pt | | U2 Pin | Test Pt | | U3 Pin | Test Pt |
 |------|----------|-|------|----------|-|------|----------|
 | 1 | Key1-1 | | 1 | Key2-1 | | 1 | SW1-2 |
-| 2 | Key1-2 | | 2 | Key2-2 | | 2 | SW9-2 |
+| 2 | Key1-2 | | 2 | Key2-2 | | 2 | SW16-2 |
 | 3 | Key1-2 | | 3 | Key2-3 | | 3 | SW17-2 | 
 | 4 | P1-2 | | 4 | P1-2 | | 4 | P1-2 |
 | 5 | Key1A-1 | | 5 | Key2A-1 | | 5 | D1 Anode |
@@ -73,3 +73,6 @@ Recommended soldering instructions.
 | 26 | P1-35 | | 26 | P1-35 | | 26 | P1-35 |
 | 27 | P1-33 | | 27 | P1-33 | | 27 | P1-33 |
 | 28 | P1-29 | | 28 | P1-31 | | 28 | P1-37 |
+
+V2 needs a jumper from SW16-2 to SW9-2.
+
