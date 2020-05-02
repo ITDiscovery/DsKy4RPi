@@ -9,7 +9,6 @@ Design Goals:
      * 3 sets of 6 Digits (elimiated the 1 and plus/minus, but I will have a mod to swap out 1st digit for a +/-)
      * 19 key switches
      * 15 LEDs + 1 "Panel LED"
-     * 1 30mA LED (LED25)
 2. Raspberry Pi: chain 3 TM1638's together and use the same ports as T Hilaire's software.
      * DataIO on GPIO19 (Pin 35)
      * Clk on GPIO13 (Pin 33)
@@ -18,11 +17,11 @@ Design Goals:
      * STB U3 on GPIO5 (Pin 37)
 3. Additional adds:
      * Extra header breakouts: 
-        * Serial: 5V, TX, RX, NC, NC, Gnd
+        * Serial: 5V, TX, RX, Gnd
         * SPI: SPI_CE0_N (Pin 24),SPI_CE1_N (Pin 26), SPI_MOSI (Pin 19), SPI_MISO (Pin 21), SPI_CLK (Pin 23), Gnd
         * I2C: 3.3V, SDA1, SCL1, IC_SD (Pin 27), IC_SC (Pin 28), Gnd
-     * Connection headers to allow additional switch banks to be connected: Since U1 and U2 keyboard connections where not needed, I broke out those to a header which will allow an additional 60 keys (not switches) to be connected. 
-     * Panel Lighting switchable via GPIO 16 (Pin 36), this optional circuitry can have higher current LEDs (such as an Arcade button LED) driven by this circuit.
+     * Connection headers to allow additional switch banks to be connected: Since U1 and U2 keyboard connections where not needed, I broke out those to a header which will allow an additional 48 keys (not switches) to be connected. 
+     * Panel Lighting switchable via GPIO 16 (Pin 36), this optional circuitry can have higher current LEDs (such as an Arcade button LED) driven by this circuit and is available at LED25.
 
 # Hardware Configuration #
 
