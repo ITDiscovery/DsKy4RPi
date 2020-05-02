@@ -5,7 +5,8 @@ Recommended soldering instructions.
 4. Switches and diodes. Run dispdiag.py -sw 
 5. Data2 and VERB 7-Segment Displays and run dispdiag.py -d2.
 6. Data1 and PROG 7-Segment Displays and run dispdiag.py -d1.
-7. Remaining 7-Segment Displays and run dispdiag.py -all.
+
+Note: There are no tests for the optional LED25 or LED16.
 
 ## SMT Soldering Check for 2x7 Board
 
@@ -73,5 +74,4 @@ Recommended soldering instructions.
 | 27 | P1-33 | | 27 | P1-33 | | 27 | P1-33 |
 | 28 | P1-29 | | 28 | P1-31 | | 28 | P1-37 |
 
-V2 needs a jumper from SW16-2 to SW9-2.
-
+V2 4x7 board needs a jumper from SW16-2 to SW9-2 (pin 2 is top right).
