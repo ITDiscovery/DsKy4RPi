@@ -9,6 +9,7 @@ Design Goals:
      * 3 sets of 6 Digits (elimiated the 1 and plus/minus, but I will have a mod to swap out 1st digit for a +/-)
      * 19 key switches
      * 15 LEDs + 1 "Panel LED"
+     * 1 30mA LED (LED25)
 2. Raspberry Pi: chain 3 TM1638's together and use the same ports as T Hilaire's software.
      * DataIO on GPIO19 (Pin 35)
      * Clk on GPIO13 (Pin 33)
