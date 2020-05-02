@@ -1,10 +1,10 @@
 Recommended soldering instructions.
 1. U1, U2, U3 and then perform the checks below.
 2. Header P1 (from bottom of board) and LEDs 1-15. Run dispdiag.py -led 
-3. Switches and diodes. Run dispdiag.py -sw 
-4. Data3 7-Segment Displays and Run dispdiag.py -d3.
-5. Data2 7-Segment Displays and run dispdiag.py -d2.
-6. Data1 7-Segment Displays and run dispdiag.py -d1.
+3. Data3 and NOUN 7-Segment Displays and Run dispdiag.py -d3.
+4. Switches and diodes. Run dispdiag.py -sw 
+5. Data2 and VERB 7-Segment Displays and run dispdiag.py -d2.
+6. Data1 and PROG 7-Segment Displays and run dispdiag.py -d1.
 7. Remaining 7-Segment Displays and run dispdiag.py -all.
 
 ## SMT Soldering Check for 2x7 Board
