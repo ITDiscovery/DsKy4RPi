@@ -109,29 +109,28 @@ Design Goals:
 
 
 
-https://github.com/thilaire/rpi-TM1638
-http://www.bgmicro.com/para-light-c-562g-dual-7-segment-readout.aspx
+https://github.com/thilaire/rpi-TM1638 \
+http://www.bgmicro.com/para-light-c-562g-dual-7-segment-readout.aspx \
+https://www.ibiblio.org/apollo/developer.html#sendrecv_Protocol \
 
-https://www.ibiblio.org/apollo/developer.html#sendrecv_Protocol
-(see Table of I/O Channels
+Components: \
+https://lcsc.com/product-detail/LED-Drivers_TM-Shenzhen-Titan-Micro-Elec-TM1638_C19187.html?ref=editor&logined=true \
 
-Components:
-https://lcsc.com/product-detail/LED-Drivers_TM-Shenzhen-Titan-Micro-Elec-TM1638_C19187.html?ref=editor&logined=true
-1x7 and 4x7 Segments:
-https://lcsc.com/product-detail/Led-Segment-Display_0-56-Digitron-red-RED_C109200.html?ref=editor&logined=true
-https://lcsc.com/product-detail/Led-Segment-Display_SM420561N_C141367.html?ref=editor&logined=true
-or
-2x7 Segments:
-http://www.bgmicro.com/para-light-c-562g-dual-7-segment-readout.aspx
+1x7 and 4x7 Segments: \
+https://lcsc.com/product-detail/Led-Segment-Display_0-56-Digitron-red-RED_C109200.html?ref=editor&logined=true \
+https://lcsc.com/product-detail/Led-Segment-Display_SM420561N_C141367.html?ref=editor&logined=true \
+or \
+2x7 Segments: \
+http://www.bgmicro.com/para-light-c-562g-dual-7-segment-readout.aspx \
 
 ## yaAGC Installation on Raspberry Pi Buster ##
 Pre-Requisites:
-'''
+```
 sudo apt-get install wx3.0-headers libwxgtk3.0-dev libsdl-dev libncurses5-dev liballegro4-dev git sudo apt-get tcl tk
 '''
 Compilation:  
-'''
-git clone --depth 1 https://github.com/virtualagc/virtualagc
+```
+git clone --depth 1 https://github.com/virtualagc/virtualagc.git
 cd virtualagc
 make clean install
-'''
+```
