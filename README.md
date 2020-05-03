@@ -127,7 +127,7 @@ http://www.bgmicro.com/para-light-c-562g-dual-7-segment-readout.aspx \
 Pre-Requisites:
 ```
 sudo apt-get install wx3.0-headers libwxgtk3.0-dev libsdl-dev libncurses5-dev liballegro4-dev git sudo apt-get tcl tk
-'''
+```
 Compilation:  
 ```
 git clone --depth 1 https://github.com/virtualagc/virtualagc.git
