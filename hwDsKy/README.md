@@ -8,6 +8,9 @@ Monitoring the commander's channel is done by:
 ```
 socat TCP:127.0.0.1:19697
 ```
+Each data packet consists of 4 bytes, arranged in bit-fields as follows (in order of transmission):
+00utpppp 01pppddd 10dddddd 11dddddd
+
 
 Look for Channel 0163 (Octal) for from CPU to DSKY
 Bit 1: AGC
@@ -20,13 +23,6 @@ Bit 9: STBY
 Bit 10: EL
 
 Look for Channel 10 (Octal) for driving 7 Segment DSKY
-
-sign Data1 = 1
-Data1 = 11,12,13,14,15
-sign Data2 = 2
-Data2 = 21,22,23,24,25
-sign Data3 = 3
-Data3 = 31,32,33,34,35
 
 ### Table 1 - Value to Character Conversion
 | Value for CCCCC or DDDDD | Displays as |
@@ -47,34 +43,24 @@ Data3 = 31,32,33,34,35
 | AAAA | B | CCCCC Represents | DDDDD  Represents |
 |---------|------|------------------|--------------------|
 | 1011 (binary) or 11 (decimal) | - | PROG1 | PROG2 |
-| 1010 (binary) or 10 (decimal)	| - | VERB1 | VERB2 |
-| 1001 (binary) or 9 (decimal)	| - | NOUN1 | NOUN2 |
-| 1000 (binary) or 8 (decimal)	| - |   | DATA1-1 |
-| 0111 (binary) or 7 (decimal) | 1+ DATA1-0 | DATA1-2 | DATA1-3 |
-| 0110 (binary) or 6 (decimal) | 1- | DATA1-4 | DATA1-5 |
-| 0101 (binary) or 5 (decimal)	2+
-Digit 21
-Digit 22
-0100 (binary) = 4 (decimal)	2-
-Digit 23
-Digit 24
-0011 (binary) = 3 (decimal)	
-Digit 25
-Digit 31
-0010 (binary) = 2 (decimal)	3+
-Digit 32
-Digit 33
-0001 (binary)  = 1 (decimal)	3-
-Digit 34
-Digit 35
-1100 (binary) = 12 (decimal)	This is an exception, departing from the BCCCCCDDDDD pattern.  Instead:
-Bit 1 lights the "PRIO DISP" indicator.
-Bit 2 lights the "NO DAP" indicator.
-Bit 3 lights the  "VEL" indicator.
-Bit 4 lights the "NO ATT" indicator.
-Bit 5 lights the  "ALT" indicator.
-Bit 6 lights the "GIMBAL LOCK" indicator.
-Bit 8 lights the "TRACKER" indicator.
-Bit 9 lights the "PROG" indicator.
+| 1010 (binary) or 10 (decimal) | - | VERB1 | VERB2 |
+| 1001 (binary) or 9 (decimal) | - | NOUN1 | NOUN2 |
+| 1000 (binary) or 8 (decimal) | - |   | DATA1-2 |
+| 0111 (binary) or 7 (decimal) | DATA1-1 Blank | DATA1-3 | DATA1-4 |
+| 0110 (binary) or 6 (decimal) | DATA1-1 - | DATA1-5 | DATA1-6 |
+| 0101 (binary) or 5 (decimal) | DATA2-1 Blank | DATA2-2 | DATA2-3 |
+| 0100 (binary) or 4 (decimal) | DATA2-2 - | DATA2-4 | DATA2-5 |
+| 0011 (binary) or 3 (decimal) | DATA3-1 Blank | DATA2-6 | DATA3-2 |
+| 0010 (binary) or 2 (decimal) | DATA3-1 Blank | DATA3-3 | DATA3-4 |
+| 0001 (binary) or 1 (decimal) | DATA3-1 - | DATA3-5 | DATA3-6 |
+| 1100 (binary) = 12 (decimal) | 	Lamps: | | |
+|  | Bit 1 | PRIO DISP | LED? |
+|  | Bit 2 | NO DAP | LED? |
+|  | Bit 3 | VEL | LED6 |
+|  | Bit 4 | NO ATT | LED10 |
+|  | Bit 5 | ALT | LED7 |
+|  | Bit 6 | GIMBAL LOCK | LED2 |
+|  | Bit 8 | TRACKER | LED5 |
+|  | Bit 9 | PROG | LED3 |
 
 Ex: "+12345" in Data1 10000 00000 00011, 01111 11001 11011, 01100 01111 11110 (binary)
