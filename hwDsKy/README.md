@@ -4,9 +4,9 @@ CM Commander yaDSKY connnects to Port 19697
 CM Navigation DSKY 19698
 LM connection to DSKY is Port 19797 
 
-Monitoring the commander's channel is done by:
+Monitoring the commander's DSKY channel is done by:
 ```
-socat TCP:127.0.0.1:19697
+sudo tcpdump -X -i lo port 19697
 ```
 Each data packet consists of 4 bytes, arranged in bit-fields as follows (in order of transmission):
 00utpppp 01pppddd 10dddddd 11dddddd
