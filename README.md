@@ -126,7 +126,8 @@ http://www.bgmicro.com/para-light-c-562g-dual-7-segment-readout.aspx \
 ## yaAGC Installation on Raspberry Pi Buster ##
 Pre-Requisites:
 ```
-sudo apt-get install wx3.0-headers libwxgtk3.0-dev libsdl-dev libncurses5-dev liballegro4-dev git sudo apt-get tcl tk
+sudo apt-get install wx3.0-headers libwxgtk3.0-dev libsdl-dev libncurses5-dev liballegro4-dev git 
+sudo apt-get tcl tk
 ```
 Compilation:  
 ```
