@@ -63,8 +63,16 @@ Design Goals:
 | 2 | Data2-1 | Data2-2 | Data1-3/6 | | | |
 | 3 | Data3-1 | Data3-2 | Data1-3/6 | | | |
 
-## LED Addressing ##
+### virtualagc DSKY Code to TM.segments[x]
+| Row | Col 1/1 | Col 1/2 | Col 2/1 | Col 2/2 | Col 3/1 | Col 3/2 |
+| -- | ------- | ------ | ------ | ----- | ------ | ------ |
+| A | Blank | Blank | Blank | Blank | M1-22 | M2-23 |
+| B | V1-14 | V2-15 | Blank | Blank | N1-6 | N2-7 |
+| 1 | +/-  = 16 | 11-17| 12-18 | 13-19 | 14-20 | 15-21 |
+| 2 | +/- = 8 | 21-9 | 22-10 | 23-11 | 24-12 | 25-13 |
+| 3 | +/- = 0 | 31-1 | 32-2 | 33-3 | 34-4 | 35-5 |
 
+## LED Addressing ##
 | IC | Digit | Segment | Location | Meaning | Register | Value |
 | ---- | ---- | --- | ---------- | ----------- | ----- | ------ |
 | U1 | 9 | 1 | LED1 | TEMP | 0x01 | 1 |
