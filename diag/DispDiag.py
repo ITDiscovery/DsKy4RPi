@@ -45,15 +45,15 @@ KeyDict[19] = [0,1,0,0]
 # LED Test Routine -led
 def led():
     for x in LampDict:
-	TM.segments[22] = "{:02}".format(x)
+        TM.segments[22] = "{:02}".format(x)
         TM.sendCommand(0x44,0)
         # First Bank of LEDs
         TM.sendData(x,1,0)
-        sleep(.3)
+        sleep(1)
         # Second Bank of LEDs
-        print(x+1)
+        TM.segments[22] = "{:02}".format(x+1)
         TM.sendData(x,2,0)
-        sleep(.3)
+        sleep(1)
         # Turn off LEDs
         TM.sendData(x,0,0)
 
@@ -64,23 +64,23 @@ def d3():
 	sleep(3)
 	for x in range(99):
 		TM.segments[0] = "{:06}".format(x)
-		TM.segments[6] = "{:02}".format((x/1000))
+		TM.segments[6] = "{:02}".format(x)
 		sleep(.05)
 def d2():
 	TM.segments[8] = "8.8.8.8.8.8.8.8."
 	sleep(3)
 	for x in range(99):
 		TM.segments[8] = "{:06}".format(x)
-		TM.segments[14] = "{:02}".format((x/1000))
+		TM.segments[14] = "{:02}".format(x)
 		sleep(.05)
 
 def d1():
 	TM.segments[16] = "8.8.8.8.8.8.8.8."
 	sleep(3)
 	for x in range(99):
-		TM.segments[16] = "{:06}".format(x)
-		TM.segments[22] = "{:02}".format((x/1000))
-		sleep(.05)
+                TM.segments[16] = "{:06}".format(x)
+                TM.segments[22] = "{:02}".format(x)
+                sleep(.05)
 
 def all():
 	TM.segments[0] = "8.8.8.8.8.8.8.8."
@@ -117,7 +117,6 @@ def keypress():
 
 def main():
 	if (len(sys.argv) < 2):
-		print(sys.argv[1])
 		d3()
 		d2()
 		d1()
