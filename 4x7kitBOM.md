@@ -5,7 +5,7 @@
 [ ] (3) SR420561N (or pin equivilent) 4x7 Segment Display \
 [ ] (12) SM420561N (or pin equivilent) 1x7 Segment Display \
 or \
-[ ] (12) C-652G (or pin equivilent) 2x7 Segment Display 
+[ ] (12) C-652G (or pin equivilent) 2x7 Segment Display (try SunLED XDVG14C2 at Jameco)
 
 [ ] (19) Button Switch 6x6x6mm \
 [ ] (19) 1N4448 Diode \
