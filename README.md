@@ -24,8 +24,8 @@ Design Goals:
      * Panel Lighting switchable via GPIO 16 (Pin 36), this optional circuitry can have higher current LEDs (such as an Arcade button LED) driven by this circuit and is available at LED25.
 
 4. New features:
-     * World clock
-     * KIM-1 Simulator 
+     * World clock (in diagram directory)
+     * KIM-1 Simulator (in KimRPi directory)
 
 # Hardware Configuration #
 
