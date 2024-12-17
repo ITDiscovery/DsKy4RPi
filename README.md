@@ -23,6 +23,10 @@ Design Goals:
      * Connection headers to allow additional switch banks to be connected: Since U1 and U2 keyboard connections where not needed, I broke out those to a header which will allow an additional 48 keys (not switches) to be connected. 
      * Panel Lighting switchable via GPIO 16 (Pin 36), this optional circuitry can have higher current LEDs (such as an Arcade button LED) driven by this circuit and is available at LED25.
 
+4. New features:
+     * World clock
+     * KIM-1 Simulator 
+
 # Hardware Configuration #
 
 ## 7 Segment Addressing ##
