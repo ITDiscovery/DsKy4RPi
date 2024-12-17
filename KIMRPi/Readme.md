@@ -4,3 +4,4 @@ This platform seems to be a great candidate to emulate a KIM-1 6502 trainer.
 There is a 6502C emulator code set.
 
 Should be fun to do in Python?
+https://github.com/docmarionum1/py65emu/tree/main
