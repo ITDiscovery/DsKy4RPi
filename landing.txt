@@ -1,0 +1,52 @@
+# Apollo 11 Real-Time Descent Profile
+# Data Source: NASA/TM-20220007267
+
+LOG, --- MISSION START: Powered Descent Initiation (PDI) ---
+# P63: Braking Phase
+DISP, 11, 6, 3
+# V06 N63: R1=Vel, R2=H-dot, R3=Alt (We simulate R1/R2 as Alt/Vel)
+DISP, 10, 0, 6
+DISP, 9, 6, 3
+WAIT, 2.0
+
+LOG, --- IGNITION: Descent Engine 10% ---
+# PDI: 50k ft, 5560 fps
+SIMULATE, 26.0, 50000, 49800, 5560, 5550
+
+LOG, --- THROTTLE UP: 100% Thrust ---
+# Braking Phase Main Burn (3.5 minutes)
+# Dropping from 49k to 39k, Velocity shedding massive energy
+SIMULATE, 204.0, 49800, 39500, 5550, 3400
+
+LOG, --- EVENT: Face Up (Yaw Maneuver) ---
+# Radar Lock-on check
+LOG, >> "Altitude light is out. Delta-H is minus 2900."
+# Continue Braking to High Gate (4.5 minutes)
+# Massive deceleration: 3400 fps -> 450 fps
+SIMULATE, 278.0, 39500, 7600, 3400, 450
+
+LOG, --- EVENT: P64 Approach Phase (High Gate) ---
+# Pitch over. Armstrong sees the landing site.
+DISP, 11, 6, 4
+# Approach: 7600 ft -> 400 ft
+SIMULATE, 114.0, 7600, 400, 450, 30
+
+LOG, --- EVENT: P66 Terminal Descent (Low Gate) ---
+# Manual Control. Hovering / Selecting Site.
+DISP, 11, 6, 6
+# Low Altitude Hover: 400 ft -> 100 ft
+SIMULATE, 60.0, 400, 100, 30, 10
+
+LOG, --- LOW LEVEL FUEL (60 Seconds) ---
+LAMP, PROG, 1
+SIMULATE, 30.0, 100, 40, 10, 5
+
+LOG, --- DUST KICKUP (40 ft) ---
+LAMP, PROG, 0
+# Final drop
+SIMULATE, 20.0, 40, 0, 5, 0
+
+LOG, --- CONTACT LIGHT ---
+LAMP, VEL, 0
+DISP, 11, 6, 8
+WAIT, 5.0
