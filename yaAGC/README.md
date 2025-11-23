@@ -13,4 +13,22 @@ This project serves as the hardware driver for a physical DSKY (Display & Keyboa
 
 ## 3. Features
 * **Non-Blocking I/O**: Ensures the physical display updates remain fluid even if network packets are delayed.
-* **Channel 10 Decoding**: fully implements the parsing of AGC Channel 10 words to
+* **Channel 10 Decoding**: fully implements the parsing of AGC Channel 10 words to update the Verb, Noun, and Registers (R1, R2, R3) with sign handling.
+* **Keypad Uplink**: Maps physical key presses (via TM1638 or similar) to AGC-compatible octal key codes, including special handling for the 'PRO' key.
+
+## 4. Configuration
+All hardware and network settings are adjustable in `config.py`.
+
+### Network
+Modify `AGC_HOST` and `AGC_PORT` to match the machine running `yaAGC`.
+```python
+AGC_HOST = 'localhost'
+AGC_PORT = 19798
+
+### Hardware (GPIO)
+Pin assignments follow the BCM numbering scheme.
+
+* Strobe List: Defines the order of display modules (STB_LIST).
+* Control Pins: Defines specific pins for DIO and CLK.
+
+The generic DSKY driver is in the hardware directory.
