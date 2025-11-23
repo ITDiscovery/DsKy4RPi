@@ -6,13 +6,14 @@ This repository contains the Python client and hardware mapping necessary to int
 
 The core challenge of this project is bridging the native Windows C++ simulation to the Linux/GPIO hardware over a network connection.
 
-The Raspberry Pi acts as a **Protocol Bridge**, translating low-level hardware changes (input/output) into high-level, string-based network commands used by the `orb:connect` API.
+The Raspberry Pi acts as a **Protocol Bridge**, translating low-level hardware changes (input/output) into high-level, string-based network commands used by the `orb:connect` API. There are several physical peices of hardware that the Raspberry Pi will bridge to orb:connect"
+
+* DSKY4Pi: Board that provides 7 Segment Display, 19 key matrix, and 16 LEDs, predominantly driven by the AGC.
+* Blinkinboard: A board that provides 40 LEDs and 32 individual switch channels.
+* USB Joystick, using PyGame
 
 ### Hardware Chain:
-**Physical Switches & LEDs** (74HCxxx Chips) ➡️ **Raspberry Pi (Python Client)** ➡️ **TCP/IP Network (orb:connect)** ➡️ **Intel iMac (Orbiter 2024 / NASSP)**
-
-### Architectural Diagram
-
+**Physical Switches & LEDs** (74HCTxxx Chips and TM1638 LED Driver) ➡️ **Raspberry Pi (Python Client)** ➡️ **TCP/IP Network (orb:connect)** ➡️ **Intel iMac (Orbiter 2024 / NASSP)**
 
 ---
 
