@@ -24,33 +24,9 @@ Design Goals:
      * Panel Lighting switchable via GPIO 16 (Pin 36), this optional circuitry can have higher current LEDs (such as an Arcade button LED) driven by this circuit and is available at LED25.
 
 4. New features:
+     * Sim-Pit for Orbiter with Blinkinboard (in SimPit directory)
      * World clock (in diagram directory)
      * KIM-1 Simulator (in KimRPi directory)
-
-# DsKy4RPi #
-Apollo DsKy for Raspberry Pi
-
-Will contain source, libraries and build notes for Apollo DsKy board for Rasperry Pi. I've seen a bunch of these boards created for Arudino, which is hugely limited, and can't run AGC simulators and other software. I've created a board via EasyEDA, which can be designed on their servers and they will create and send you a minimum of 5. I've stashed the board designs here also.
-
-Design Goals:
-
-1. Not a slave to the actual Apollo DsKy, as close as feasible. 
-     * 3 sets of 6 Digits (elimiated the 1 and plus/minus, but I will have a mod to swap out 1st digit for a +/-)
-     * 19 key switches
-     * 15 LEDs + 1 "Panel LED"
-2. Raspberry Pi: chain 3 TM1638's together and use the same ports as T Hilaire's software.
-     * DataIO on GPIO19 (Pin 35)
-     * Clk on GPIO13 (Pin 33)
-     * STB U1 on GPIO26 (Pin 29)
-     * STB U2 on GPIO6 (Pin 31)
-     * STB U3 on GPIO5 (Pin 37)
-3. Additional adds:
-     * Extra header breakouts: 
-        * Serial: 5V, TX, RX, Gnd
-        * SPI: SPI_CE0_N (Pin 24),SPI_CE1_N (Pin 26), SPI_MOSI (Pin 19), SPI_MISO (Pin 21), SPI_CLK (Pin 23), Gnd
-        * I2C: 3.3V, SDA1, SCL1, IC_SD (Pin 27), IC_SC (Pin 28), Gnd
-     * Connection headers to allow additional switch banks to be connected: Since U1 and U2 keyboard connections where not needed, I broke out those to a header which will allow an additional 48 keys (not switches) to be connected. 
-     * Panel Lighting switchable via GPIO 16 (Pin 36), this optional circuitry can have higher current LEDs (such as an Arcade button LED) driven by this circuit and is available at LED25.
 
 ## Supported AGC Functions
 
@@ -70,39 +46,6 @@ The system supports the complete "Verb-Noun" syntax used by Apollo astronauts to
     * **PRO**: Proceed (confirm action).
     * **KEY REL**: Release Key (handover control).
     * **RSET**: Error Reset.
-
-## Hardware Extensions
-
-Beyond the standard DSKY, this project extends functionality to include external monitoring and flight control hardware, bridging the gap between a "calculator" interface and a full cockpit simulation.
-
-### 1. The "BlinkinBoard" (System Monitoring)
-While the DSKY displays numerical data, the **BlinkinBoard** visualizes the raw binary state of the spacecraft's systems. It allows the user to see "under the hood" of the AGC's logic in real-time.
-
-* **Hardware:**
-    * **40 LEDs** driven by 5x **74HC595** Shift Registers.
-    * **32 Switches** read by 4x **74HC165** Shift Registers.
-    * **Universal Driver:** `blinkin_driver.py` handles high-speed bit-banging via `gpiod`.
-* **Software Client:**
-    * The `blinkin_agc_monitor.py` script acts as a TCP client for `yaAGC`. It listens for specific octal channels and maps bits to physical LEDs.
-* **Channel Mapping:**
-    * **RCS Thrusters (Channels 05 & 06):** Visualizes the firing of the 16 Reaction Control System jets.
-    * **Main Engine (Channel 11):** LED 16 lights up when the Service Propulsion System (SPS) or Descent Engine is active (Bit 13).
-    * **IMU Status (Channel 12):** Monitors critical navigation flags:
-        * **Zero Optics** (Bit 4)
-        * **IMU Operate** (Bit 5)
-        * **Coarse Align** (Bit 6)
-    * **Alarms:** Displays **ISS Warning** and **Light Fail** statuses directly from the AGC error registers.
-
-### 2. Joystick (Flight Control)
-To support manual piloting phases (such as Transposition & Docking or Lunar Landing), the system integrates a physical joystick.
-
-* **Function:** Acts as the **Rotation Hand Controller (RHC)** or **Translation Hand Controller (THC)** depending on the mode.
-* **Integration:**
-    * Inputs are mapped to AGC manual control channels.
-    * Allows for pitch, roll, and yaw input to the Digital Autopilot (DAP).
-    * Enables manual closure rates during docking procedures.
-
-# Hardware Configuration #
 
 ## 7 Segment Addressing ##
 
