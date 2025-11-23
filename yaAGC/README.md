@@ -1,2 +1,16 @@
-Project Title: PiDSKY Phase 3 Driver
-1. Project OverviewThis project is a Python-based hardware driver designed to interface a physical DSKY (Display & Keyboard) replica with the yaAGC (Yet Another Apollo Guidance Computer) simulator. It acts as a bridge, translating TCP network packets from the simulated AGC into physical GPIO signals for 7-segment displays, lamps, and reading keypad inputs.2. File Structure & Functionalitymain.py: The entry point of the application. It initializes the hardware and network connections, then enters an infinite event loop. This loop handles "Downlink" data (AGC $\to$ Display) and "Uplink" data (Keypad $\to$ AGC).agc.py: Handles the low-level TCP networking. It implements a non-blocking socket client that connects to the AGC simulator (default port 19798). It manages packet packing/unpacking for specific AGC Channels (e.g., Channel 10 for display, Channel 15 for keys).config.py: A centralized configuration file containing:Network settings (Host/Port).GPIO pin assignments (BCM numbering) for the Raspberry Pi.Translation maps for Octal codes, raw key bytes, and 7-segment digit decoding.3. Key FeaturesNon-Blocking Network I/O: The AgcClient uses non-blocking sockets to ensure the physical display updates smoothly without hanging while waiting for server data.Channel 10 Decoding: Implements logic to parse AGC Channel 10 (Display) words, extracting Row IDs, sign bits, and character codes to update specific sections of the DSKY (Verb, Noun, Registers 1-3).Keypad Mapping: Maps raw hardware bytes (likely from TM1638 modules) to specific AGC key codes (e.g., 'VERB', 'ENTR', 'PRO'), handling special octal values like 0o20000 for the 'PRO' key.Hardware Abstraction: Uses a modular DskyHardware class (imported in main.py) to separate high-level logic from specific hardware implementations.4. ConfigurationNetwork: Modify AGC_HOST and AGC_PORT in config.py to point to the machine running yaAGC.Hardware Setup:GPIO: Pin definitions for Data/Clock/Latch lines are found in GPIO_PINS.TM1638: The strobe list (STB_LIST) dictates the order of display modules.5. DependenciesPython 3.xyaAGC (or compatible VirtualAGC simulator)hardware.interface module (implied dependency for DskyHardware).6. UsageEnsure the yaAGC simulator is running and listening on port 19798.Run the driver:
+# PiDSKY Phase 3 Driver
+
+## 1. Project Overview
+This project serves as the hardware driver for a physical DSKY (Display & Keyboard) replica. It interfaces with the **yaAGC** (Yet Another Apollo Guidance Computer) simulator via TCP, translating network packets into physical GPIO signals for 7-segment displays, status lamps, and keypad inputs.
+
+## 2. File Structure
+* **`main.py`**: The application entry point. It initializes the `DskyHardware` and `AgcClient`, then enters an infinite event loop to handle bi-directional data (Downlink from AGC, Uplink from Keypad).
+* **`agc.py`**: Manages the TCP network connection. It connects to the AGC simulator (default port 19798) using non-blocking sockets and handles the packing/unpacking of AGC channel data (Channels 010, 011, 013, 015, 163).
+* **`config.py`**: Central configuration file containing:
+    * **Network**: Host IP and Port settings.
+    * **GPIO**: Raspberry Pi BCM pin mappings for strobe lines, data, and clocks.
+    * **Mappings**: Translation tables for Octal-to-Character decoding and raw hardware key codes.
+
+## 3. Features
+* **Non-Blocking I/O**: Ensures the physical display updates remain fluid even if network packets are delayed.
+* **Channel 10 Decoding**: fully implements the parsing of AGC Channel 10 words to
