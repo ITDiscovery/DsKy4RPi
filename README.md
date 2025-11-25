@@ -117,27 +117,25 @@ The system supports the complete "Verb-Noun" syntax used by Apollo astronauts to
 ## KEY Addressing ##
 | IC | GR | Key | Location | Meaning | Code |
 | --- | ---- | --- | ---------- | ----------- | --- |
-| U1 | 1 | 1 | SW1 | ENTR | 2 | 
-| U1 | 1 | 2 | SW2 | RSET | 6 | 
-| U1 | 1 | 3 | SW3 | CLR |
-| U1 | 1 | 4 | SW4 | PROG |
-| U1 | 1 | 5 | SW5 | KEY REL |
-| U1 | 1 | 6 | SW6 | ENTR |
-| U1 | 1 | 7 | SW7 | ENTR |
-| U1 | 1 | 8 | SW8 | ENTR |
-| U1 | 2 | 1 | SW9 | ENTR | 1 |
-| U1 | 2 | 2 | SW10 | ENTR | 5 |
-| U1 | 2 | 3 | SW11 | ENTR |
-| U1 | 2 | 4 | SW12 | ENTR |
-| U1 | 2 | 5 | SW13 | ENTR |
-| U1 | 2 | 6 | SW14 | ENTR |
-| U1 | 2 | 7 | SW15 | ENTR |
-| U1 | 2 | 8 | SW16 | ENTR |
-| U1 | 3 | 1 | SW17 | ENTR | 0 |
-| U1 | 3 | 2 | SW18 | ENTR | 4 |
-| U1 | 3 | 3 | SW19 | ENTR |
-
-
+| U1 | 1 | 1 | SW1 | ENTR | [4,0,0,0] | 
+| U1 | 1 | 2 | SW2 | RSET | [64,0,0,0] | 
+| U1 | 1 | 3 | SW3 | CLR | [0,4,0,0] |
+| U1 | 1 | 4 | SW4 | PROG | [0,64,0,0] |
+| U1 | 1 | 5 | SW5 | KEY REL | [0,0,4,0] |
+| U1 | 1 | 6 | SW6 | 9 | [0,0,64,0] |
+| U1 | 1 | 7 | SW7 | 6 | [0,0,0,4] |
+| U1 | 1 | 8 | SW8 | 3 | [0,0,0,64] |
+| U1 | 2 | 1 | SW9 | 8 | [2,0,0,0] |
+| U1 | 2 | 2 | SW10 | 5 | [32,0,0,0] |
+| U1 | 2 | 3 | SW11 | 2 | [0,2,0,0] |
+| U1 | 2 | 4 | SW12 | 7 | [0,32,0,0] |
+| U1 | 2 | 5 | SW13 | 4 | [0,0,2,0] |
+| U1 | 2 | 6 | SW14 | 1 | [0,0,32,0] |
+| U1 | 2 | 7 | SW15 | + | [0,0,0,2] |
+| U1 | 2 | 8 | SW16 | - | [0,0,0,32] |
+| U1 | 3 | 1 | SW17 | 0 | [1,0,0,0] |
+| U1 | 3 | 2 | SW18 | N | [16,0,0,0] |
+| U1 | 3 | 3 | SW19 | V | [0,1,0,0] |
 
 https://github.com/thilaire/rpi-TM1638 \
 http://www.bgmicro.com/para-light-c-562g-dual-7-segment-readout.aspx \
