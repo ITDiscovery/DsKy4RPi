@@ -17,7 +17,69 @@ The Raspberry Pi acts as a **Protocol Bridge**, translating low-level hardware c
 
 ---
 
-## 💻 2. I/O Translation Table (Input & Output)
+## 💡 2. DSKY Mapping and Telemetry Specification
+
+The DSKY interface is handled primarily by a **TM1638 module** (for segments and LEDs) and a **BlinkinBoard** (for auxiliary switches).
+
+### A. DSKY Display Segment Mapping (Output)
+
+The DSKY numeric display segments are addressed directly on the TM1638 via the segment index (`TM.segments[x]`).
+
+| Display Field | DSKY Register | Segment Start Index (`TM.segments[x]`) | Notes |
+| :--- | :--- | :--- | :--- |
+| **Program** | - | RowCol 1/1 (Not Displayed) | Used for P00-P99 |
+| **Verb/Noun** | V/N | Col 1/1 - Col 2/2 | 1/1 = V1, 1/2 = V2, 2/1 = N1, 2/2 = N2 |
+| **Register R1** | R1 | Col 3/1 - Col 5/5 | 3/1 = R1 sign, 3/2 = R1 digit 1, etc. |
+| **Register R2** | R2 | Col 6/1 - Col 8/5 | 6/1 = R2 sign, 6/2 = R2 digit 1, etc. |
+| **Register R3** | R3 | Col 9/1 - Col 11/5 | 9/1 = R3 sign, 9/2 = R3 digit 1, etc. |
+
+### B. DSKY LED Addressing (Output)
+
+The indicator lights are mapped to LEDs on the TM1638 modules. The client polls the NASSP status and sets the corresponding TM1638 LED.
+
+| Indicator | DSKY Code Location | TM1638 Board | TM1638 LED Index (`TM.leds[x]`) |
+| :--- | :--- | :--- | :--- |
+| **TEMP** | U191 | Board 1 | 0 |
+| **GIMBAL LOCK** | U192 | Board 1 | 1 |
+| **PROG** | U193 | Board 1 | 2 |
+| **RESTART** | U194 | Board 1 | 3 |
+| **TRACKER** | U195 | Board 1 | 4 |
+| **ALT** | U196 | Board 1 | 5 |
+| **VEL** | U197 | Board 1 | 6 |
+| **COMP ACTIVITY** | U198 | Board 1 | 7 |
+| **UPLINK ACTIVITY** | U1101 | Board 2 | 8 |
+| **NO ATT** | U1102 | Board 2 | 9 |
+| **STBY** | U1103 | Board 2 | 10 |
+| **KEY REL** | U1104 | Board 2 | 11 |
+| **OPR ERR** | U1105 | Board 2 | 12 |
+
+### C. TM1638 Keypad Input Mapping (Input)
+
+The raw key codes reported by the TM1638 driver are translated into NASSP string commands.
+
+| Raw TM1638 Key Code | DSKY Key Name | NASSP String Name (Input Target) |
+| :--- | :--- | :--- |
+| **1** | ENTER | `DskySwitchEnter` |
+| **2** | RESET | `DskySwitchReset` |
+| **3** | CLEAR | `DskySwitchClear` |
+| **4** | PROCEED | `DskySwitchProg` |
+| **5** | KEY REL | `DskySwitchKeyRel` |
+| **6** | NINE | `DskySwitchNine` |
+| **7** | SIX | `DskySwitchSix` |
+| **8** | THREE | `DskySwitchThree` |
+| **9** | EIGHT | `DskySwitchEight` |
+| **10** | FIVE | `DskySwitchFive` |
+| **11** | TWO | `DskySwitchTwo` |
+| **12** | SEVEN | `DskySwitchSeven` |
+| **13** | FOUR | `DskySwitchFour` |
+| **14** | ONE | `DskySwitchOne` |
+| **15** | PLUS | `DskySwitchPlus` |
+| **16** | MINUS | `DskySwitchMinus` |
+| **17** | ZERO | `DskySwitchZero` |
+| **18** | NOUN | `DskySwitchNoun` |
+| **19** | VERB | `DskySwitchVerb` |
+
+## 💻 3. I/O Translation Table (Input & Output)
 
 This table defines the definitive string identifiers used for communication via the `orb:connect` interface. These strings map directly to the `Register()` calls found in the NASSP source code (e.g., `saturnpanel.cpp`, `lempanel.cpp`).
 
@@ -65,7 +127,7 @@ To illuminate physical LEDs or update displays, the Python client must send a **
 
 ---
 
-## ⚙️ 3. Development Notes (Python Client)
+## ⚙️ 4. Development Notes (Python Client)
 
 The Python client should utilize the standard `socket` module to handle the TCP/IP connection to `orb:connect`.
 
