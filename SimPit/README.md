@@ -134,3 +134,72 @@ The Python client should utilize the standard `socket` module to handle the TCP/
 * **Communication Protocol:** The `orb:connect` interface communicates over TCP sockets, sending and receiving simple ASCII strings.
 * **Loop:** The client should run a continuous loop: read all switch inputs, send **SET** commands, and then fetch all necessary **GET** variables to update the physical outputs.
 * **Error Handling:** Implement robust retry logic, as networking latency can interrupt the data stream.
+* 
+# Orbiter SimPit Interface - Version 3.0
+
+**Status:** Stable / Archived
+**Date:** November 2025
+**Hardware:** Raspberry Pi (GPIO Chip 4), DSKY (TM1638), BlinkinBoard (Shift Registers)
+
+## 1. System Overview
+This project bridges physical cockpit hardware to Orbiter Space Flight Simulator (via `orb:connect`). It uses a unified, thread-safe Python driver to manage multiple SPI-like chains simultaneously to prevent resource conflicts.
+
+### Hardware Stack
+* **Controller:** Raspberry Pi 4
+* **Display:** 3x TM1638 LED & Key Modules (Chained)
+* **I/O Board:** "BlinkinBoard" (5x 74HC595 Output, 4x 74HC165 Input)
+* **Inputs:** 3-Position Toggle Switches, Momentary Arcade Buttons, DSKY Keypad
+* **Outputs:** 7-Segment Displays, Status LEDs (Red/Green/Blue/Yellow)
+
+## 2. GPIO Pinout (BCM Numbering)
+
+| Signal | Pin | Description |
+| :--- | :--- | :--- |
+| **Blinkin Out** | | **74HC595 Chain (LEDs)** |
+| `BB_CLK` | 21 | Shift Clock |
+| `BB_LATCH` | 20 | Storage Latch |
+| `BB_DATA` | 16 | Data Out (MOSI) |
+| **Blinkin In** | | **74HC165 Chain (Switches)** |
+| `BB_CLK_IN` | 17 | Shift Clock |
+| `BB_LATCH_IN` | 22 | Parallel Load (Latch) |
+| `BB_DATA_IN` | 27 | Data In (MISO) |
+| **DSKY** | | **TM1638 Chain** |
+| `TM_CLK` | 13 | Clock |
+| `TM_DIO` | 19 | Data I/O |
+| `TM_STB[0]` | 26 | Strobe - **Board 0 (Bottom)** |
+| `TM_STB[1]` | 6 | Strobe - **Board 1 (Middle)** |
+| `TM_STB[2]` | 5 | Strobe - **Board 2 (Top)** |
+
+## 3. Configuration Maps
+
+### DSKY Layout
+* **Board 2 (Top):** Register 1 (Digits 0-5), PROG (Digits 6-7), Status Indicators.
+* **Board 1 (Mid):** Register 2 (Digits 0-5), VERB (Digits 6-7).
+* **Board 0 (Bot):** Register 3 (Digits 0-5), NOUN (Digits 6-7), Keypad Input.
+
+### BlinkinBoard LED Map (Outputs)
+* **Red Row:** Bits 0-7 (Master Alarm, G/N, CES, Engine Stop)
+* **Green Row:** Bits 8-15 (Eng Start, SPS Ready, Ullage)
+* **Arcade:** Bits 16-17 (Abort, Abort Stage)
+* **Blue:** Bit 32 (Watchdog)
+* **Yellow:** Bits 34-35 (Heater, Glycol)
+
+### Switch Input Map
+* **Toggle 1 (Engine Arm):** Bits 2 (Up) / 3 (Down)
+* **Toggle 2 (SC Cont):** Bits 0 (Up) / 1 (Down)
+* **Toggle 3 (Opt Zero):** Bits 4 (Up) / 5 (Down)
+* **Toggle 4 (IMU Pwr):** Bits 6 (Up) / 7 (Down)
+* **Abort Button:** Bit 8
+* **Abort Stage:** Bit 9
+
+## 4. Software Architecture
+* **`UnifiedSimPitDriver.py`**: Low-level hardware driver. Manages `gpiod` requests and bit-banging for both TM1638 and Shift Registers.
+* **`orbiter_bridge.py`**: Main client.
+    * `input_loop`: Polls switches/keys, detects state changes, sends `SET` commands.
+    * `output_loop`: Requests `GET` telemetry, updates display/LED buffers.
+* **`mock_orbconnect_server.py`**: Simulates Orbiter. Provides a Curses-based dashboard to toggle virtual lights and view switch inputs.
+
+## 5. Usage
+1.  **Start Server:** `python3 mock_orbconnect_server.py`
+2.  **Start Bridge:** `python3 orbiter_bridge.py`
+3.  **Verify:** Toggle keys on Server to light LEDs. Flip physical switches to see input on Server.
