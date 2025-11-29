@@ -112,6 +112,30 @@ These inputs control major vessel systems, often requiring two- or three-positio
 | **RCS X-Feed** | `RCSXFeedSwitch` (LM) | `0`: Down, `1`: Center, `2`: Up |
 | **LM Main SOV A** | `RCSMainSovASwitch` (LM) | `0`: Down, `1`: Center, `2`: Up |
 
+| Inidcator | LED PIn | NASSP Name |
+| Red 0 | 37 |  Master Alarm |
+| Red 1 | 36 | GN Sys |
+| Red 2 | 39 | CES AC |
+| Red 3 | 38 | CES DC |
+| Red 4 | 31 | Eng Stop |
+| Red 5 | 30 | Open |
+| Red 6 | 29 | Open |
+| Red 7 | 28 | Open |
+| Blue 0 | 27 | Watchdog |
+| Blue 1 | 26 | Open |
+| Green 0 | 25 | (not lit) |
+| Green 1 | 24 | Eng Start |
+| Green 2 | 23 | SPS Ready |
+| Green 3 | 22 | Ullage |
+| Green 4 | 21 | Open |
+| Green 5 | 20 | Open |
+| Green 6 | 19 | Open |
+| Green 7 | 18 | Open |
+| Yellow 0 | 17 | Open |
+| Yellow 1 | 16 | Glycol |
+| Abort 0 | 0 | Abort |
+| Abort 1 | 1 | Abort Stg |
+
 ### C. Indicator and Telemetry Outputs (GET Variables)
 
 To illuminate physical LEDs or update displays, the Python client must send a **GET** command to fetch the current status of these NASSP variables.
