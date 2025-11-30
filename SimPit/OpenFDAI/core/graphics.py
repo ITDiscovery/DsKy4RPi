@@ -135,6 +135,9 @@ class FDAIScreen:
         glRotate(pitch, 1, 0, 0)
         glRotate(yaw,   0, 1, 0)
         
+        # 1. Stand the ball up (Fixes "Looking at North Pole")
+        glRotate(-90, 1, 0, 0)
+        
         gluSphere(self.quad, 1.2, 64, 64)
         glPopMatrix()
         
