@@ -6,7 +6,8 @@ from core.graphics import FDAIScreen
 # --- CONFIGURATION DECLARATIONS ---
 
 # Network Settings
-SERVER_IP   = "127.0.0.1"  # Set to 'localhost' or the IP of your Windows PC
+#SERVER_IP   = "127.0.0.1"  # Set to 'localhost' or the IP of your Windows PC
+SERVER_IP   = "192.168.2.229"  # Set to 'localhost' or the IP of your Windows PC
 SERVER_PORT = 37777        # Default OrbConnect port
 
 # Window Settings
@@ -15,13 +16,13 @@ WIN_HEIGHT  = 400
 FULLSCREEN  = False        # Set to True for dedicated SimPit screens
 
 # Asset Settings
-TEXTURE_PATH = "assets/navball_8k.png"
+TEXTURE_PATH = "assets/navball_2k.png"
 
 # Flight Dynamics Tweaks
 # Toggle these if the ball spins the wrong way compared to the real Orbiter
 INVERT_PITCH = False
-INVERT_YAW   = False 
-INVERT_ROLL  = False
+INVERT_YAW   = True
+INVERT_ROLL  = True
 
 # Colors (R, G, B) - 0.0 to 1.0
 OVERLAY_COLOR = (1.0, 0.6, 0.0) # NASA Orange
@@ -44,6 +45,7 @@ def main():
     
     running = True
     while running:
+        
         # Apply Inversions if necessary
         p = client.pitch * (-1 if INVERT_PITCH else 1)
         y = client.yaw   * (-1 if INVERT_YAW   else 1)
